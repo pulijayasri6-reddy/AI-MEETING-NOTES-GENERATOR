@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>📊 Meeting Notes Dashboard</h1>
+
+<a href="/"><button>⬅ Back</button></a>
+
+<hr>
+
+{% if meetings %}
+    {% for meeting in meetings %}
+            <div class="container">
+                <div style="border:1px solid black; padding:10px; margin:10px;"></div>
+                <div class="card"></div>
+            
+            <h3>📝 Full Text:</h3>
+            <p>{{ meeting.text }}</p>
+
+            <h3>📌 Summary:</h3>
+            <p>{{ meeting.summary }}</p>
+
+        </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No meetings recorded yet.</p>
+{% endif %}
+
+</body>
+</html>

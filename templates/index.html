@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Meeting Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<div class="container"></div>
+<body>
+
+<h1>🎤 AI Meeting Notes Generator</h1>
+
+<a href="/start"><button>Start Recording 🎤</button></a>
+<a href="/stop"><button>Stop & Summarize ⏹️</button></a>
+<a href="/dashboard"><button>📊 View Dashboard</button></a>
+
+<hr>
+
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+
+{% if text %}
+<h3>📝 Full Text:</h3>
+<p>{{ text }}</p>
+{% endif %}
+
+{% if summary %}
+<h3>📌 Summary:</h3>
+<p>{{ summary }}</p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* 🌈 Background */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* 📦 Container */
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* 🎤 Title */
+h1 {
+    margin-top: 20px;
+}
+
+/* 🔘 Buttons */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff9800;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e68900;
+}
+
+/* 📄 Cards */
+.card {
+    background: white;
+    color: black;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    width: 70%;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+/* 📝 Text */
+p {
+    font-size: 16px;
+}
