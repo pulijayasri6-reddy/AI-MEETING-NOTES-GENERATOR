@@ -7,24 +7,19 @@
 <body>
 
 <h1>📊 Meeting Notes Dashboard</h1>
-
-<a href="/"><button>⬅ Back</button></a>
+<a href="/home"><button>⬅ Back</button></a>
+<a href="/logout"><button>Logout</button></a>
 
 <hr>
 
 {% if meetings %}
     {% for meeting in meetings %}
-            <div class="container">
-                <div style="border:1px solid black; padding:10px; margin:10px;"></div>
-                <div class="card"></div>
-            
+        <div class="container">
+            <h3>👤 User: {{ meeting.user }}</h3>
             <h3>📝 Full Text:</h3>
             <p>{{ meeting.text }}</p>
-
             <h3>📌 Summary:</h3>
             <p>{{ meeting.summary }}</p>
-
-        </div>
         </div>
     {% endfor %}
 {% else %}

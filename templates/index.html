@@ -4,10 +4,11 @@
     <title>AI Meeting Notes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<div class="container"></div>
 <body>
 
 <h1>🎤 AI Meeting Notes Generator</h1>
+<p>Welcome, {{ session['username'] }}</p>
+<a href="/logout"><button>Logout</button></a>
 
 <a href="/start"><button>Start Recording 🎤</button></a>
 <a href="/stop"><button>Stop & Summarize ⏹️</button></a>
