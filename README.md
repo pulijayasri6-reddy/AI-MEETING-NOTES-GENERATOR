@@ -27,6 +27,8 @@ ai-meeting-notes/
 ├── speech_to_text.py
 ├── summarize.py
 ├── meetings.json
+├── requirements.txt      
+├── .gitignore            
 │
 ├── templates/
 │   ├── login.html
