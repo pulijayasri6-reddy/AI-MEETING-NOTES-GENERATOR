@@ -1,49 +1,22 @@
-import sounddevice as sd
-import numpy as np
-from scipy.io.wavfile import write
 import speech_recognition as sr
 
-fs = 44100
-recording = []
-stream = None
-
-def callback(indata, frames, time, status):
-    global recording
-    recording.append(indata.copy())
-
-# ✅ Start recording
+# ✅ Start recording (disabled for server)
 def start_recording():
-    global stream, recording
-    recording = []
+    print("⚠️ Recording not supported on server")
 
-    stream = sd.InputStream(samplerate=fs, channels=1, dtype='int16', callback=callback)
-    stream.start()
-
-    print("🎤 Recording started...")
-
-# ✅ Stop recording
+# ✅ Stop recording (disabled)
 def stop_recording(filename="audio.wav"):
-    global stream, recording
+    print("⚠️ Stop recording (not available)")
 
-    stream.stop()
-    stream.close()
-
-    audio_data = np.concatenate(recording, axis=0)
-    write(filename, fs, audio_data)
-
-    print("✅ Recording saved")
-
-# ✅ Convert speech to text (IMPORTANT)
+# ✅ Convert speech to text (demo or file-based)
 def speech_to_text(filename="audio.wav"):
     recognizer = sr.Recognizer()
 
-    with sr.AudioFile(filename) as source:
-        audio = recognizer.record(source)
-
     try:
-        text = recognizer.recognize_google(audio)
-        print("📝 You said:", text)
-        return text
-    except Exception as e:
-        print("❌ Error:", e)
-        return ""
+        with sr.AudioFile(filename) as source:
+            audio = recognizer.record(source)
+            text = recognizer.recognize_google(audio)
+            print("📝 You said:", text)
+            return text
+    except:
+        return "Demo text: This is a sample meeting transcription."

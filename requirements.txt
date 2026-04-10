@@ -2,4 +2,3 @@ Flask
 numpy
 scipy
 SpeechRecognition
-sounddevice
