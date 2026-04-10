@@ -103,7 +103,9 @@ cd ai-meeting-notes
 pip install -r requirements.txt
 python app.py
 # Live Demo
-(Add your Render link here)
+ *Running on http://127.0.0.1:10000
+ * Running on http://10.28.58.126:10000
+
 #  Login Credentials
 Username: jayasri  
 Password: 12345
