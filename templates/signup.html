@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - AI Meeting Notes</title>
+    <title>Signup</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<h1>🔐 Login to AI Meeting Notes</h1>
+
+<h1>🆕 Create Account</h1>
 
 {% if error %}
 <p style="color:red">{{ error }}</p>
@@ -18,9 +19,11 @@
     <label>Password:</label><br>
     <input type="password" name="password" required><br><br>
 
-    <button type="submit">Login</button>
+    <button type="submit">Signup</button>
 </form>
+
+<p>Already have an account?</p>
+<a href="/"><button>Login</button></a>
+
 </body>
 </html>
-<p>Don't have an account?</p>
-<a href="/signup"><button>Signup</button></a>
