@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import json, os
 
+from speech_to_text import start_recording, stop_recording, speech_to_text
+from summarize import summarize_text
+
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
 
 USERS_FILE = "users.json"
+DATA_FILE = "meetings.json"
 
 # ---------------- Load Users ---------------- #
 def load_users():
@@ -60,6 +64,50 @@ def home():
     if "username" not in session:
         return redirect(url_for("login"))
     return render_template("index.html")
+
+# ---------------- Start Recording ---------------- #
+@app.route("/start")
+def start():
+    start_recording()
+    return render_template("index.html", message="🎤 Recording started...")
+
+# ---------------- Stop Recording ---------------- #
+@app.route("/stop")
+def stop():
+    stop_recording()
+
+    text = speech_to_text()
+    summary = summarize_text(text)
+
+    meeting = {
+        "user": session["username"],
+        "text": text,
+        "summary": summary
+    }
+
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, "r") as f:
+            meetings = json.load(f)
+    else:
+        meetings = []
+
+    meetings.append(meeting)
+
+    with open(DATA_FILE, "w") as f:
+        json.dump(meetings, f, indent=4)
+
+    return render_template("index.html", text=text, summary=summary)
+
+# ---------------- Dashboard ---------------- #
+@app.route("/dashboard")
+def dashboard():
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, "r") as f:
+            meetings = json.load(f)
+    else:
+        meetings = []
+
+    return render_template("dashboard.html", meetings=meetings)
 
 # ---------------- Logout ---------------- #
 @app.route("/logout")
